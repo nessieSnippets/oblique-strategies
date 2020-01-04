@@ -1,0 +1,17 @@
+{
+	"name": "oblique-strategies",
+	"version": "0.1.0",
+	"repository": "nessieSnippets/obliqueStrategies",
+	"license": "MIT",
+	"main": "index.js",
+	"scripts": {
+		"test": "jest"
+	},
+	"keywords": [
+		"oblique strategies",
+		"npm",
+		"package",
+		"nessieSnippets"
+	],
+	"bin": "cli.js"
+}
