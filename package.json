@@ -1,7 +1,7 @@
 {
 	"name": "@nessiesnippets/oblique-strategies",
 	"version": "1.0.0",
-	"repository": "nessieSnippets/obliqueStrategies",
+	"repository": "nessieSnippets/oblique-strategies",
 	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
