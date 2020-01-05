@@ -2,18 +2,18 @@
 
 [Oblique strategies](https://en.wikipedia.org/wiki/Oblique_Strategies) aims to promote creativity by creating creative blocks, "to enourage lateral thinking". The cards were created by Brian Eno and Peter Schmidt.
 
-This package returns an oblique strategies card, using the list made by SansUmbrella. 
+This package returns an oblique strategies card, using the list made by [SansUmbrella](https://github.com/sansumbrella/Processing-ObliqueStrategies), either within a project or on commandline.
 
 ## Install and run
 
-Intended installation and running
+Command line
 
 ```
-// install
->> npm install -g oblique-strategies
+>> npm install -g @nessiesnippets/oblique-strategies
 
-// print out quote to command line
->> oblique-strategies
+>> oblique-strategies #prints random card
+
+>> oblique-strategies help #prints help message
 ```
 
 ## References & Notes
@@ -21,7 +21,5 @@ Intended installation and running
 - [How to make a small npm package](https://www.freecodecamp.org/news/how-to-make-a-beautiful-tiny-npm-package-and-publish-it-2881d4307f78/)
 
 - [Cards list](https://github.com/sansumbrella/Processing-ObliqueStrategies/blob/master/src/com/sansumbrella/StrategyList.java)
-
-- Inspirational Quotes - [Github](https://github.com/vinitshahdeo/inspirational-quotes)  
 
 - Cautionary Tales - [Bowie, Jazz and the Unplayable Piano](http://timharford.com/articles/cautionarytales/)
