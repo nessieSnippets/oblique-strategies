@@ -13,5 +13,10 @@
 		"package",
 		"nessieSnippets"
 	],
-	"bin": "cli.js"
+	"bin": {
+		"oblique-strategies": "cli.js"
+	},
+	"devDependencies": {
+		"jest": "^26.1.0"
+	}
 }
