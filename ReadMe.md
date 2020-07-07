@@ -13,7 +13,7 @@ Command line
 
 >> oblique-strategies #prints random card
 
->> oblique-strategies help #prints help message
+>> oblique-strategies --help #prints help message
 ```
 
 ## References & Notes
