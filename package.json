@@ -17,7 +17,7 @@
 		"oblique-strategies": "cli.js"
 	},
 	"devDependencies": {
-		"jest": "^26.1.0"
+		"jest": "27.2.4"
 	},
 	"dependencies": {
 		"yargs": "^15.3.1"
