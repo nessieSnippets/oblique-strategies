@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
-const yargs = require('yargs')
-const { getInspirationCard } = require('./index')
+const yargs = require('yargs');
+const { getInspirationCard } = require('./index');
 
 const argv = yargs
   .usage('Usage: $0 -e [edition]')
@@ -16,7 +16,6 @@ const argv = yargs
   .alias('v', 'version')
 
   .example('$0', 'Get a random strategy from deck, edition 3')
-  .example('$0 -e 1', 'Get a random strategy from deck, edition 1')
-  .argv
+  .example('$0 -e 1', 'Get a random strategy from deck, edition 1').argv;
 
-console.log(getInspirationCard(argv.edition))
+console.log(getInspirationCard(argv.edition));
