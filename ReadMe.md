@@ -1,5 +1,7 @@
 # Oblique Strategies
 
+![CI status](https://github.com/nessieSnippets/oblique-strategies/actions/workflows/ci.yaml/badge.svg)
+
 [Oblique strategies](https://en.wikipedia.org/wiki/Oblique_Strategies) aims to promote creativity by creating creative blocks, "to enourage lateral thinking". The cards were created by Brian Eno and Peter Schmidt.
 
 This package returns an oblique strategies card, using the list made by [SansUmbrella](https://github.com/sansumbrella/Processing-ObliqueStrategies), either within a project or on commandline.
