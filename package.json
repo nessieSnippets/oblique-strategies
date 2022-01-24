@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"main": "index.js",
 	"scripts": {
-		"test": "jest"
+		"test": "jest",
+		"lint": "prettier --check '**/*.js' '**/*.md'",
+		"lint:fix": "prettier --write '**/*.js' '**/*.md'"
 	},
 	"keywords": [
 		"oblique strategies",
@@ -17,7 +19,8 @@
 		"oblique-strategies": "cli.js"
 	},
 	"devDependencies": {
-		"jest": "27.2.4"
+		"jest": "27.2.4",
+		"prettier": "^2.5.1"
 	},
 	"dependencies": {
 		"yargs": "^15.3.1"
