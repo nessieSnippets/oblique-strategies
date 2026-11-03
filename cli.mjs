@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
-const yargs = require('yargs');
-const { getInspirationCard } = require('./index');
+import { createRequire } from 'node:module';
+import yargs from 'yargs';
+import { hideBin } from 'yargs/helpers';
+import { getInspirationCard } from './index.js';
 
-const argv = yargs
+const { version } = createRequire(import.meta.url)('./package.json');
+
+const argv = yargs(hideBin(process.argv))
   .usage('Usage: $0 -e [edition]')
 
   .option('e')
@@ -13,6 +17,7 @@ const argv = yargs
 
   .help('h')
   .alias('h', 'help')
+  .version(version)
   .alias('v', 'version')
 
   .example('$0', 'Get a random strategy from deck, edition 3')
