@@ -1,0 +1,42 @@
+# Keeps one draft release for the version in package.json, pointing at the
+# latest commit on main that passed CI. Publishing the draft triggers publish.yaml.
+
+name: Draft release
+
+on:
+  workflow_run:
+    workflows: [CI]
+    types: [completed]
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  draft_release:
+    if: github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.event == 'push'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.event.workflow_run.head_sha }}
+      - name: Create or replace the draft release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          HEAD_SHA: ${{ github.event.workflow_run.head_sha }}
+        run: |
+          tag="v$(node -p "require('./package.json').version")"
+
+          # Draft releases have no git tag yet, so an existing tag means this version was already released.
+          if git ls-remote --exit-code --tags origin "refs/tags/$tag" > /dev/null; then
+            echo "::notice::$tag is already released. Bump the version in package.json to draft a new release."
+            exit 0
+          fi
+
+          gh api --paginate "repos/$GITHUB_REPOSITORY/releases" \
+            --jq ".[] | select(.draft and .tag_name == \"$tag\") | .id" |
+            while read -r id; do
+              gh api -X DELETE "repos/$GITHUB_REPOSITORY/releases/$id"
+            done
+
+          gh release create "$tag" --draft --target "$HEAD_SHA" --title "$tag" --generate-notes
