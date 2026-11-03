@@ -11,6 +11,7 @@ const argv = yargs(hideBin(process.argv))
   .usage('Usage: $0 -e [edition]')
 
   .option('e')
+  .requiresArg('e')
   .alias('e', 'edition')
   .default('e', 3)
   .describe('e', 'The deck edition to pull from')
@@ -23,4 +24,9 @@ const argv = yargs(hideBin(process.argv))
   .example('$0', 'Get a random strategy from deck, edition 3')
   .example('$0 -e 1', 'Get a random strategy from deck, edition 1').argv;
 
-console.log(getInspirationCard(argv.edition));
+try {
+  console.log(getInspirationCard(argv.edition));
+} catch (error) {
+  console.error(error.message);
+  process.exitCode = 1;
+}
