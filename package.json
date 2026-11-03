@@ -1,6 +1,6 @@
 {
 	"name": "@nessiesnippets/oblique-strategies",
-	"version": "2.0.0",
+	"version": "2.1.0",
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/nessieSnippets/oblique-strategies.git"
@@ -12,8 +12,8 @@
 	},
 	"scripts": {
 		"test": "jest",
-		"lint": "prettier --check '**/*.js' '**/*.mjs' '**/*.md'",
-		"lint:fix": "prettier --write '**/*.js' '**/*.mjs' '**/*.md'"
+		"lint": "prettier --check '**/*.js' '**/*.mjs' '**/*.ts' '**/*.md'",
+		"lint:fix": "prettier --write '**/*.js' '**/*.mjs' '**/*.ts' '**/*.md'"
 	},
 	"keywords": [
 		"oblique strategies",
@@ -31,5 +31,6 @@
 	},
 	"dependencies": {
 		"yargs": "^18.2.0"
-	}
+	},
+	"types": "index.d.ts"
 }

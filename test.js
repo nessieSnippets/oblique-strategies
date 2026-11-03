@@ -1,6 +1,10 @@
 const { execFileSync, spawnSync } = require('node:child_process');
 const { buildSync } = require('esbuild');
-const { getInspirationCard } = require('./index.js');
+const {
+  getEditions,
+  getInspirationCard,
+  getAllInspirationCards,
+} = require('./index.js');
 
 const edition1 = require('./data/edition1.json');
 const edition2 = require('./data/edition2.json');
@@ -43,11 +47,37 @@ describe('Get Inspirational Card (edition 4)', () => {
   });
 });
 
+describe('Get Editions', () => {
+  it('returns the allowed editions', () => {
+    expect(getEditions()).toEqual([1, 2, 3, 4]);
+  });
+});
+
+describe('Get All Inspiration Cards', () => {
+  it('returns the requested deck', () => {
+    expect(getAllInspirationCards(1)).toEqual(edition1);
+    expect(getAllInspirationCards(2)).toEqual(edition2);
+    expect(getAllInspirationCards(4)).toEqual(edition4);
+  });
+
+  it('defaults to edition 3', () => {
+    expect(getAllInspirationCards()).toEqual(edition3);
+  });
+
+  it('returns a copy, so callers cannot change the deck', () => {
+    getAllInspirationCards(1).pop();
+    expect(getAllInspirationCards(1)).toHaveLength(edition1.length);
+  });
+});
+
 describe.each([[5], [0], ['abc'], [null]])(
   'Invalid edition (%j)',
   (edition) => {
     it('throws a clear error', () => {
       expect(() => getInspirationCard(edition)).toThrow('edition must be 1–4');
+      expect(() => getAllInspirationCards(edition)).toThrow(
+        'edition must be 1–4',
+      );
     });
   },
 );
@@ -84,8 +114,8 @@ describe('CLI', () => {
 describe('Browser ESM bundle', () => {
   it('runs in strict mode', () => {
     const entry = `
-      import { getInspirationCard } from './index.js';
-      console.log(JSON.stringify(getInspirationCard(4)));
+      import { getEditions, getInspirationCard, getAllInspirationCards } from './index.js';
+      console.log(JSON.stringify([getEditions(), getInspirationCard(4), getAllInspirationCards(4).length]));
     `;
     const { outputFiles } = buildSync({
       stdin: { contents: entry, resolveDir: __dirname },
@@ -98,6 +128,10 @@ describe('Browser ESM bundle', () => {
       input: outputFiles[0].text,
       encoding: 'utf8',
     });
-    expect(edition4).toContain(JSON.parse(output));
+    expect(JSON.parse(output)).toEqual([
+      [1, 2, 3, 4],
+      expect.any(String),
+      edition4.length,
+    ]);
   });
 });

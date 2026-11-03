@@ -17,11 +17,17 @@ const getDeck = (edition) => {
   return deck;
 };
 
+const getEditions = () => cards.map((_, index) => index + 1);
+
 const getInspirationCard = (edition = 3) => {
   const deck = getDeck(edition);
   return deck[getRandomInt(deck.length)];
 };
 
+const getAllInspirationCards = (edition = 3) => [...getDeck(edition)];
+
 module.exports = {
+  getEditions,
   getInspirationCard,
+  getAllInspirationCards,
 };
