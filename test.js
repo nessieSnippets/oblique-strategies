@@ -11,6 +11,7 @@ describe('Get Inspirational Card (edition 1)', () => {
   it('returns a card', () => {
     const card = getInspirationCard(1);
     expect(edition1).toContain(card);
+    expect(card).toEqual('Infinitesimal gradations');
   });
 });
 
@@ -18,6 +19,9 @@ describe('Get Inspirational Card (edition 2)', () => {
   it('returns a card', () => {
     const card = getInspirationCard(2);
     expect(edition2).toContain(card);
+    expect(card).toEqual(
+      'In total darkness, or in a very large room, very quietly',
+    );
   });
 });
 
@@ -25,6 +29,7 @@ describe('Get Inspirational Card (edition 3, default)', () => {
   it('returns a card', () => {
     const card = getInspirationCard();
     expect(edition3).toContain(card);
+    expect(card).toEqual('Into the impossible');
   });
 });
 
@@ -32,5 +37,6 @@ describe('Get Inspirational Card (edition 4)', () => {
   it('returns a card', () => {
     const card = getInspirationCard(4);
     expect(edition4).toContain(card);
+    expect(card).toEqual('Listen to the quiet voice');
   });
 });
